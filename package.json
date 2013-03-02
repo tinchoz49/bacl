@@ -1,0 +1,20 @@
+{
+  "author": "Acosta Martin <tinchoz49@gmail.com>",
+  "name": "bacl",
+  "description": "Simple, fast and secure node ACL",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:1602/Railway-passport.git"
+  },
+  "main": "./index.js",
+  "engines": {
+    "node": ">= 0.6.x"
+  },
+  "dependencies": {
+    "underscore": "latest",
+    "string": "latest"
+  },
+  "devDependencies": {},
+  "optionalDependencies": {}
+}
