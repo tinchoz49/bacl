@@ -2,7 +2,7 @@
   "author": "Acosta Martin <tinchoz49@gmail.com>",
   "name": "bacl",
   "description": "Simple, fast and secure node ACL",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "repository": {
     "type": "git",
     "url": "https://github.com/tinchoz49/bacl"
