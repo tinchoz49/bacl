@@ -35,7 +35,7 @@ Example adding roles
     or
     bacl.allow('guest', { rule: 'posts#index', type: ['get','post','put'] });
     or
-    bacl.allow('guest', { rule: [ 'posts#index' , 'posts#edit' ], type: ['get', 'post] });
+    bacl.allow('guest', { rule: [ 'posts#index' , 'posts#edit' ], type: ['get', 'post'] });
     or
     bacl.allow('guest', [ { rule: 'posts#index', type: 'get' }, 
       { rule: 'posts#edit', type: 'post' } ]);
@@ -46,7 +46,7 @@ Example adding users
     or
     bacl.add('user1', ['guest', 'manager']);
     or
-    bacl.add(['user1','user2'], 'guest']);
+    bacl.add(['user1','user2'], 'guest');
     
 Example chequing access
 
