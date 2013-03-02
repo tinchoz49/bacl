@@ -5,7 +5,7 @@
   "version": "0.0.1",
   "repository": {
     "type": "git",
-    "url": "git@github.com:1602/Railway-passport.git"
+    "url": "https://github.com/tinchoz49/bacl"
   },
   "main": "./index.js",
   "engines": {
