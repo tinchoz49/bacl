@@ -16,5 +16,15 @@
     "string": "latest"
   },
   "devDependencies": {},
-  "optionalDependencies": {}
+  "optionalDependencies": {},
+  "keywords": [
+    "acl",
+    "access control list",
+    "user",
+    "rol",
+    "resources",
+    "permisions",
+    "security",
+    "authorization"
+  ],
 }
