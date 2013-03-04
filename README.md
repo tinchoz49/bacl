@@ -15,12 +15,13 @@ Just the 'bacl' library:
 npm install bacl
 ```
 
-### Use bacl using mongoose connection
+### Using bacl with the mongoose adapter
 
 Initialize the bacl and pass a mongoose connection
 
 ```js
 bacl = require('bacl');
+//you need a mongoose connection
 bacl = new bacl(new bacl.mongooseAdapter(mongoose));
 ```
 
@@ -28,19 +29,19 @@ Example adding roles
 
 ```js
 bacl.allow('guest', '*');
-or
+/* or */
 bacl.allow(['guest', 'manager'], '*');
-or
+/* or */
 bacl.allow('guest', 'posts#index');
-or
+/* or */
 bacl.allow('guest', 'posts');
-or
+/* or */
 bacl.allow('guest', { rule: 'posts#index', type: 'get' } );
-or
+/* or */
 bacl.allow('guest', { rule: 'posts#index', type: ['get','post','put'] });
-or
+/* or */
 bacl.allow('guest', { rule: [ 'posts#index' , 'posts#edit' ], type: ['get', 'post'] });
-or
+/* or */
 bacl.allow('guest', [ { rule: 'posts#index', type: 'get' }, 
   { rule: 'posts#edit', type: 'post' } ]);
 ```
@@ -49,9 +50,9 @@ Example adding users
 
 ```js
 bacl.add('user1', 'guest');
-
+/* or */
 bacl.add('user1', ['guest', 'manager']);
-or
+/* or */
 bacl.add(['user1','user2'], 'guest');
 ```
     
@@ -65,7 +66,7 @@ bacl.can('user1','posts', function (ok) {
         deny access
     }
 });
-or
+/* or */
 bacl.can('user1','posts#index', function (ok) {
     if (ok) {
         allowed access
@@ -73,7 +74,7 @@ bacl.can('user1','posts#index', function (ok) {
         deny access
     }
 });
-or
+/* or */
 bacl.can('user1', { url: 'posts#index', type: 'get' }, function (ok) {
     if (ok) {
         allowed access
