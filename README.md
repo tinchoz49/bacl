@@ -50,24 +50,24 @@ Example adding users
     
 Example chequing access
 
-    bacl.can('user1','posts', function (result) {
-        if (result.can) {
+    bacl.can('user1','posts', function (ok) {
+        if (ok) {
             allowed access
         }else{
             deny access
         }
     });
     or
-    bacl.can('user1','posts#index', function (result) {
-        if (result.can) {
+    bacl.can('user1','posts#index', function (ok) {
+        if (ok) {
             allowed access
         }else{
             deny access
         }
     });
     or
-    bacl.can('user1', { url: 'posts#index', type: 'get' }, function (result) {
-        if (result.can) {
+    bacl.can('user1', { url: 'posts#index', type: 'get' }, function (ok) {
+        if (ok) {
             allowed access
         }else{
             deny access
