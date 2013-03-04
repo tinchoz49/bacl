@@ -56,7 +56,7 @@ bacl.add('user1', ['guest', 'manager']);
 bacl.add(['user1','user2'], 'guest');
 ```
     
-Example chequing access
+Example checking access
 
 ```js
 bacl.can('user1','posts', function (ok) {
