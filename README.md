@@ -84,6 +84,63 @@ bacl.can('user1', { url: 'posts#index', type: 'get' }, function (ok) {
 });
 ```
 
+### Using bacl in compoundjs with the jugglingdb Adapter
+In the world of nodejs we have an excellent framework called compoundjs, I'm going to show how integrate bacl with compoundjs.
+
+In config/environment.js
+
+First we are going to create a new file in config/ of the compound app. We are calling 'bacl-config.js' and copy/paste this code:
+
+```js
+exports.init = function(compound) {
+  var conf = require('./database')[compound.app.set('env')];
+  var Schema = require('jugglingdb').Schema;
+  var schema = new Schema(conf.driver, { url: conf.url });
+  
+  var bacl = require('bacl');
+  bacl = new bacl(new bacl.jugglingdbAdapter(schema));
+  bacl.allow('guest','posts');
+  //in this case we are using an static user called user1, but this is only for example
+  bacl.add('user1', 'guest');
+}
+```
+
+The next step is open the file config/environment.js and write in app.configure function:
+
+```js
+module.exports = function (compound) {
+
+    var express = require('express');
+    var app = compound.app;
+
+    app.configure(function(){
+        var baclConfig = require('./bacl-config');
+        baclConfig.init(compound);
+        ...
+        //the code of compound
+        ....
+        ...
+    });
+
+}
+```
+
+And this is everthing. For example, if you want check the access of the user1 in the controller posts you can write this in the controller app/controllers/posts_controller.js:
+
+```js
+before(function (req) {
+  compound.bacl.can('user1', req.controllerName+'#'+req.actionName, function (result) {
+    if (result == false){
+      return send({ code: 404, error: 'Nooo access' });
+    }else{
+      next();
+    }
+  });
+});
+```
+
+Very simple!
+
 License
 -
 
