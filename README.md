@@ -21,10 +21,14 @@ Initialize the bacl and pass a mongoose connection
 
 ```js
 bacl = require('bacl');
-//you need a mongoose connection
+//you need a mongoose or jugglingb connection (to use jugglingdb, look at the bottom of the document)
 bacl = new bacl(new bacl.mongooseAdapter(mongoose));
 ```
-
+bacl has a default list of messages for diferent events (grantAccess,denyAccess and userNotFound) you can change this
+```js
+bacl = new bacl(new bacl.mongooseAdapter(mongoose),
+{"grantAccess": "User has grant access", ...});
+```
 Example adding roles
 
 ```js
@@ -59,7 +63,7 @@ bacl.add(['user1','user2'], 'guest');
 Example checking access
 
 ```js
-bacl.can('user1','posts', function (ok) {
+bacl.can('user1','posts', function (ok, message) {
     if (ok) {
         allowed access
     }else{
@@ -67,7 +71,7 @@ bacl.can('user1','posts', function (ok) {
     }
 });
 /* or */
-bacl.can('user1','posts#index', function (ok) {
+bacl.can('user1','posts#index', function (ok, message) {
     if (ok) {
         allowed access
     }else{
@@ -75,7 +79,7 @@ bacl.can('user1','posts#index', function (ok) {
     }
 });
 /* or */
-bacl.can('user1', { url: 'posts#index', type: 'get' }, function (ok) {
+bacl.can('user1', { url: 'posts#index', type: 'get' }, function (ok, message) {
     if (ok) {
         allowed access
     }else{
@@ -83,7 +87,19 @@ bacl.can('user1', { url: 'posts#index', type: 'get' }, function (ok) {
     }
 });
 ```
+bacl has got a fast and simple way to enable/disable users
 
+```js
+bacl.enable('user1', function(err){
+  
+});
+/* or */
+bacl.disable('user1', function(err){
+  
+});
+
+/* the first parameter can be an array */
+```
 ### Using bacl in compoundjs with the jugglingdb Adapter
 In the world of nodejs we have an excellent framework called compoundjs, I'm going to show how integrate bacl with compoundjs.
 
