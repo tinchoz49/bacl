@@ -24,10 +24,10 @@ bacl = require('bacl');
 //you need a mongoose or jugglingb connection (to use jugglingdb, look at the bottom of the document)
 bacl = new bacl(new bacl.mongooseAdapter(mongoose));
 ```
-bacl has a default list of messages for diferent events (grantAccess,denyAccess and userNotFound) you can change this
+bacl has got a default list of messages for diferent events (grantAccess,denyAccess and userNotFound) you can change this
 ```js
 bacl = new bacl(new bacl.mongooseAdapter(mongoose),
-{"grantAccess": "User has grant access", ...});
+{"grantAccess": "User has got grant access", ...});
 ```
 Example adding roles
 
