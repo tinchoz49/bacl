@@ -1,11 +1,14 @@
 {
-  "author": "Acosta Martin <tinchoz49@gmail.com>",
+  "author": {
+    "name": "Acosta Martin",
+    "email": "tinchoz49@gmail.com"
+  },
   "name": "bacl",
   "description": "Simple, fast and secure node ACL",
-  "version": "0.1.0",
+  "version": "0.1.3",
   "repository": {
     "type": "git",
-    "url": "https://github.com/tinchoz49/bacl"
+    "url": "git://github.com/tinchoz49/bacl.git"
   },
   "main": "./index.js",
   "engines": {
@@ -13,7 +16,7 @@
   },
   "dependencies": {
     "underscore": "latest",
-    "string": "latest"
+    "underscore.string": "latest"
   },
   "devDependencies": {},
   "optionalDependencies": {},
@@ -26,5 +29,18 @@
     "permisions",
     "security",
     "authorization"
-  ]
+  ],
+  "_npmUser": {
+    "name": "tinchoz49",
+    "email": "tinchoz49@gmail.com"
+  },
+  "_id": "bacl@0.1.0",
+  "_engineSupported": true,
+  "_npmVersion": "1.1.21",
+  "_nodeVersion": "v0.8.21",
+  "_defaultsLoaded": true,
+  "dist": {
+    "shasum": "40017d7032b5ab74fc94fed9a6cda1eee20631e8"
+  },
+  "_from": "bacl@0.1.0"
 }

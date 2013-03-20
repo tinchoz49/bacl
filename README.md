@@ -40,14 +40,14 @@ bacl.allow('guest', 'posts#index');
 /* or */
 bacl.allow('guest', 'posts');
 /* or */
-bacl.allow('guest', { rule: 'posts#index', type: 'get' } );
+bacl.allow('guest', { rule: 'posts#index', method: 'get' } );
 /* or */
-bacl.allow('guest', { rule: 'posts#index', type: ['get','post','put'] });
+bacl.allow('guest', { rule: 'posts#index', method: ['get','post','put'] });
 /* or */
-bacl.allow('guest', { rule: [ 'posts#index' , 'posts#edit' ], type: ['get', 'post'] });
+bacl.allow('guest', { rule: [ 'posts#index' , 'posts#edit' ], method: ['get', 'post'] });
 /* or */
-bacl.allow('guest', [ { rule: 'posts#index', type: 'get' }, 
-  { rule: 'posts#edit', type: 'post' } ]);
+bacl.allow('guest', [ { rule: 'posts#index', method: 'get' }, 
+  { rule: 'posts#edit', method: 'post' } ]);
 ```
 
 Example adding users
@@ -63,7 +63,7 @@ bacl.add(['user1','user2'], 'guest');
 Example checking access
 
 ```js
-bacl.can('user1','posts', function (ok, message) {
+bacl.can('user1','posts', function (ok, user, message) {
     if (ok) {
         allowed access
     }else{
@@ -71,7 +71,7 @@ bacl.can('user1','posts', function (ok, message) {
     }
 });
 /* or */
-bacl.can('user1','posts#index', function (ok, message) {
+bacl.can('user1','posts#index', function (ok, user, message) {
     if (ok) {
         allowed access
     }else{
@@ -79,7 +79,7 @@ bacl.can('user1','posts#index', function (ok, message) {
     }
 });
 /* or */
-bacl.can('user1', { url: 'posts#index', type: 'get' }, function (ok, message) {
+bacl.can('user1', { url: 'posts#index', method: 'get' }, function (ok, user, message) {
     if (ok) {
         allowed access
     }else{
@@ -87,6 +87,28 @@ bacl.can('user1', { url: 'posts#index', type: 'get' }, function (ok, message) {
     }
 });
 ```
+When you recive the user with the method "can" you can check the roles when you want for example to show and hide elements in the views for diferents roles.
+
+```js
+if (user.is('guest')) {
+  //show menu for the guest
+}else{
+  //show other menu
+}
+/* you can define an "or" operator using arrays */
+if (user.is(['guest', 'guest2']) {
+  //show menu for the guest or guest2
+}else{
+  //show other menu
+}
+/* you can define an operator using objects, everthing is posible */
+if (user.is({or: ['guest', 'guest2'], and: 'guest3'})) {
+  //if the user is guest and guest2 show the menu for that
+}else{
+  //show other menu
+}
+```
+
 bacl has got a fast and simple way to enable/disable users
 
 ```js
